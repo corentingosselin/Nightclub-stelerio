@@ -1,7 +1,0 @@
-main: com.stelerio.plugin.nightclub.NightClub
-name: NightClub
-version: 0.0.1
-description: Night Club
-autor: [AlexMog, Cocoraid]
-depend: []
-commands:
