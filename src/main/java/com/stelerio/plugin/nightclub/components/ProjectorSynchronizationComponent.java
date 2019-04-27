@@ -4,4 +4,5 @@ import com.artemis.Component;
 
 public class ProjectorSynchronizationComponent extends Component {
 
+
 }
