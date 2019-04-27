@@ -10,7 +10,6 @@ public class ProjectorSynchronizationSystem extends IteratingSystem {
     private ComponentMapper<ProjectorSynchronizationComponent> mProjectorSynchronization;
     private ComponentMapper<TransformComponent> mTransform;
 
-    @SuppressWarnings("unchecked")
     public ProjectorSynchronizationSystem() {
         super(Aspect.all(TransformComponent.class, ProjectorSynchronizationComponent.class));
     }
