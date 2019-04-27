@@ -24,7 +24,7 @@ public class NightClubRunnable extends BukkitRunnable {
             if (delta > 0) {
                 lag += delta;
                 while (lag > MS_PER_UPDATE_TICK) {
-                    mWorld.setDelta(delta);
+                    mWorld.setDelta(MS_PER_UPDATE_TICK / 1000);
                     mWorld.process();
                 }
             }
