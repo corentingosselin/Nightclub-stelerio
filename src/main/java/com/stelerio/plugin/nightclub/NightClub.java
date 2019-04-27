@@ -23,14 +23,17 @@ public class NightClub extends JavaPlugin {
     
     @Override
     public void onEnable() {
+        ProcessorSystem processor = new ProcessorSystem(mProcessorQueue);
         WorldConfiguration worldConfig = new WorldConfigurationBuilder()
                 /* Register systems and plugins */
-                .with(new ProcessorSystem(mProcessorQueue))
+                .with(processor)
                 .with(new TargetSystem())
                 .with(new VelocitySystem())
                 .with(new ProjectorSynchronizationSystem())
                 .build();
         mWorld = new World(worldConfig);
+        
+        processor.setArchetypeManager(new ArchetypeManager(mWorld));
         
         mNightClubRunnable = new NightClubRunnable(mWorld);
         mNightClubRunnable.runTaskAsynchronously(this);
