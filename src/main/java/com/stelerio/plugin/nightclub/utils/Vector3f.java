@@ -1,9 +1,11 @@
 package com.stelerio.plugin.nightclub.utils;
 
 public class Vector3f {
-    private float mX;
-    private float mY;
-    private float mZ;
+    public static final Vector3f ZERO = new Vector3f();
+    
+    protected float mX;
+    protected float mY;
+    protected float mZ;
     
     public Vector3f(float x, float y, float z) {
         mX = x;
@@ -29,5 +31,14 @@ public class Vector3f {
         mX = x;
         mY = y;
         mZ = z;
+    }
+    
+    public boolean equals(Vector3f other) {
+        if (this == other) return true;
+        return other.getX() == getX() && other.getY() == getY() && other.getZ() == getZ();
+    }
+    
+    public double distance(Vector3f other) {
+        return Math.sqrt(Math.pow(other.getX() - getX(), 2) + Math.pow(other.getY() - getY(), 2) + Math.pow(other.getZ() - getZ(), 2));
     }
 }

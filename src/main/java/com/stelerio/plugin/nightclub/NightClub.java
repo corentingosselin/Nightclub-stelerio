@@ -5,7 +5,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.artemis.World;
 import com.artemis.WorldConfiguration;
 import com.artemis.WorldConfigurationBuilder;
-import com.stelerio.plugin.nightclub.systems.MovementSystem;
+import com.stelerio.plugin.nightclub.systems.VelocitySystem;
 
 public class NightClub extends JavaPlugin {
     private World mWorld;
@@ -15,7 +15,7 @@ public class NightClub extends JavaPlugin {
     public void onEnable() {
         WorldConfiguration worldConfig = new WorldConfigurationBuilder()
                 /* Register systems and plugins */
-                .with(new MovementSystem())
+                .with(new VelocitySystem())
                 .build();
         mWorld = new World(worldConfig);
         
