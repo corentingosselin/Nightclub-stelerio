@@ -5,7 +5,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import com.artemis.World;
 
 public class NightClubRunnable extends BukkitRunnable {
-    private final static long MS_PER_UPDATE_TICK = 33; // ~30 hz
+    private final static long MS_PER_UPDATE_TICK = 50; // ~20 hz
     private final World mWorld;
     
     public NightClubRunnable(World world) {
