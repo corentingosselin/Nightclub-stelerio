@@ -9,6 +9,7 @@ import com.artemis.Aspect;
 import com.artemis.World;
 import com.artemis.WorldConfiguration;
 import com.artemis.WorldConfigurationBuilder;
+import com.artemis.managers.UuidEntityManager;
 import com.artemis.utils.IntBag;
 import com.stelerio.plugin.nightclub.processors.Processor;
 import com.stelerio.plugin.nightclub.systems.ProcessorSystem;
@@ -26,6 +27,7 @@ public class NightClub extends JavaPlugin {
         ProcessorSystem processor = new ProcessorSystem(mProcessorQueue);
         WorldConfiguration worldConfig = new WorldConfigurationBuilder()
                 /* Register systems and plugins */
+                .with(new UuidEntityManager())
                 .with(processor)
                 .with(new TargetSystem())
                 .with(new VelocitySystem())

@@ -13,7 +13,6 @@ public class TargetSystem extends IteratingSystem {
     private ComponentMapper<VelocityComponent> mVelocity;
     private ComponentMapper<TargetComponent> mTarget;
 
-    @SuppressWarnings("unchecked")
     public TargetSystem() {
         super(Aspect.all(TransformComponent.class, VelocityComponent.class, TargetComponent.class));
     }

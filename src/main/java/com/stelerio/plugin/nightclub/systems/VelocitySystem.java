@@ -10,7 +10,6 @@ public class VelocitySystem extends IteratingSystem {
     private ComponentMapper<TransformComponent> mTransform;
     private ComponentMapper<VelocityComponent> mVelocity;
     
-    @SuppressWarnings("unchecked")
     public VelocitySystem() {
         super(Aspect.all(TransformComponent.class, VelocityComponent.class));
     }
