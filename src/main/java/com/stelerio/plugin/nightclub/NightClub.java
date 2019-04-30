@@ -48,6 +48,7 @@ public class NightClub extends JavaPlugin {
         
         processor.setArchetypeManager(new ArchetypeManager(mWorld));
         
+        getServer().getPluginManager().registerEvents(new PlayerListener(this), this);
         getCommand("nc").setExecutor(this);
         
         mNightClubRunnable = new NightClubRunnable(mWorld);

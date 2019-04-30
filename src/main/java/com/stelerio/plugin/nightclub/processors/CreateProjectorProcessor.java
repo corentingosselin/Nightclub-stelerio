@@ -9,7 +9,6 @@ import com.artemis.World;
 import com.artemis.managers.UuidEntityManager;
 import com.stelerio.plugin.nightclub.ArchetypeManager;
 import com.stelerio.plugin.nightclub.ArchetypeManager.ArchetypeType;
-import com.stelerio.plugin.nightclub.components.ProjectorSynchronizationComponent;
 import com.stelerio.plugin.nightclub.components.TransformComponent;
 
 public class CreateProjectorProcessor extends Processor {
