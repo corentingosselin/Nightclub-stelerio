@@ -1,11 +1,11 @@
 package com.stelerio.plugin.nightclub.components;
 
 import com.artemis.Component;
-import com.stelerio.plugin.nightclub.utils.VolatileVector3f;
+import com.stelerio.plugin.nightclub.utils.Vector3f;
 
 public class TargetComponent extends Component {
-    public VolatileVector3f position;
-    public VolatileVector3f rotation;
-    public volatile float positionTime;
-    public volatile float rotationTime;
+    public Vector3f position;
+    public Vector3f rotation;
+    public long positionTime;
+    public long rotationTime;
 }

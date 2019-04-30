@@ -15,12 +15,10 @@ import com.stelerio.plugin.nightclub.components.TransformComponent;
 public class CreateProjectorProcessor extends Processor {
     private final Location mLocation;
     private final UUID mUUID;
-    private final int mNetworkId;
     
-    public CreateProjectorProcessor(int networkId, UUID uuid, Location location) {
+    public CreateProjectorProcessor(UUID uuid, Location location) {
         mLocation = location;
         mUUID = uuid;
-        mNetworkId = networkId;
     }
     
     @Override
@@ -30,8 +28,6 @@ public class CreateProjectorProcessor extends Processor {
         transform.position.set((float) mLocation.getX(), (float) mLocation.getY(), (float) mLocation.getZ());
         transform.rotation.set(0, mLocation.getPitch(), mLocation.getYaw());
         world.getSystem(UuidEntityManager.class).setUuid(e, mUUID);
-        ProjectorSynchronizationComponent sync = world.getMapper(ProjectorSynchronizationComponent.class).get(e);
-        sync.networkId = mNetworkId;
     }
 
 }
