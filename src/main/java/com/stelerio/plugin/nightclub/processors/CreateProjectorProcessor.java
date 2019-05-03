@@ -54,7 +54,7 @@ public class CreateProjectorProcessor extends Processor {
     /**
      * Spawn projector at the exact location where admin is standing + yaw and pitch rotation.
      * Don't call this method inside join event, async join event instead.
-     * Moreover TODO listen map chunk packet, this would do the job without async player join (be sure that the packet is not sent twice without the previous entity removing).
+     * Moreover TODO listen map chunk packet to display the projector, this would do the job without async player join (be sure that the packet is not sent twice without the previous entity removing).
      * @param world
      * @param archetypeManager
      */
