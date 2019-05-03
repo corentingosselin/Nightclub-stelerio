@@ -5,3 +5,6 @@ description: Night Club
 autor: [AlexMog, Cocoraid]
 depend: []
 commands:
+   nc:
+      description: NightClub commands
+      usage: /nc <arg>
