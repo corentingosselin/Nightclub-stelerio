@@ -2,8 +2,9 @@ main: com.stelerio.plugin.nightclub.NightClub
 name: NightClub
 version: 0.0.1
 description: Night Club
-autor: [AlexMog, Cocoraid]
-depend: []
+author: [AlexMog, Cocoraid]
+depend: [ProtocolLib]
+api-version: 1.13
 commands:
    nc:
       description: NightClub commands

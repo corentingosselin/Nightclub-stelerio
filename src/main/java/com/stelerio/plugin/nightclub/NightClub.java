@@ -60,6 +60,7 @@ public class NightClub extends JavaPlugin {
     }
     
     private void sendHelp(CommandSender sender) {
+        sender.sendMessage("NC> /nc ADDPROJECTOR - Adds a new projector to player location and returns its id");
         sender.sendMessage("NC> /nc ADDPROJECTOR <x> <y> <z> - Adds a new projector to coordonates and returns its id");
         sender.sendMessage("NC> /nc REMOVEPROJECTOR <id> - Removes a projector using its id");
         sender.sendMessage("NC> /nc SETTARGET <id> <x> <y> <z> <rotX> <rotY> <rotZ> <time to target in MS> - Set the position target for an object");
@@ -81,17 +82,26 @@ public class NightClub extends JavaPlugin {
         Player player = (Player) sender;
         
         try {
-            if (args[0].equalsIgnoreCase("ADDPROJECTOR") && args.length >= 4) {
-                UUID uuid = UUID.randomUUID();
-                queueProcessor(new CreateProjectorProcessor(uuid, new Location(player.getWorld(),
-                        Float.parseFloat(args[1]),
-                        Float.parseFloat(args[2]),
-                        Float.parseFloat(args[3]))));
-                sender.sendMessage("NC> Added projector with ID " + uuid.toString());
+            if (args[0].equalsIgnoreCase("ADDPROJECTOR")) {
+                if( args.length >= 4) {
+                    UUID uuid = UUID.randomUUID();
+                    queueProcessor(new CreateProjectorProcessor(uuid, new Location(player.getWorld(),
+                            Float.parseFloat(args[1]),
+                            Float.parseFloat(args[2]),
+                            Float.parseFloat(args[3]))));
+                    sender.sendMessage("NC> Added projector with ID " + uuid.toString());
+                    //send console ( to allow copy/paste)
+                    System.out.println("New projector added with uuid: " + uuid.toString());
+                } else if(args.length <= 1) {
+                    UUID uuid = UUID.randomUUID();
+                    queueProcessor(new CreateProjectorProcessor(uuid, player.getLocation()));
+                    sender.sendMessage("NC> Added projector with ID " + uuid.toString());
+                    System.out.println("New projector added with uuid: " + uuid.toString());
+                }
             } else if (args[0].equalsIgnoreCase("REMOVEPROJECTOR") && args.length >= 2) {
                 queueProcessor(new RemoveEntityProcessor(UUID.fromString(args[1])));
                 sender.sendMessage("NC> Removed projector with ID " + args[1]);
-            } else if (args[0].equals("SETTARGET") && args.length >= 9) {
+            } else if (args[0].equalsIgnoreCase("SETTARGET") && args.length >= 9) {
                 long travelTime = Long.parseUnsignedLong(args[8]);
                 queueProcessor(new TargetUpdateProcessor(UUID.fromString(args[1]),
                         new Vector3f(Float.parseFloat(args[2]), Float.parseFloat(args[3]), Float.parseFloat(args[4])),
@@ -99,7 +109,7 @@ public class NightClub extends JavaPlugin {
                         new Vector3f(Float.parseFloat(args[5]), Float.parseFloat(args[6]), Float.parseFloat(args[7])),
                         travelTime));
                 sender.sendMessage("NC> Target set on entity with ID " + args[1]);
-            } else if (args[0].equals("TOGGLE") && args.length >= 3) {
+            } else if (args[0].equalsIgnoreCase("TOGGLE") && args.length >= 3) {
                 queueProcessor(new ToggleProcessor(UUID.fromString(args[1]), Boolean.parseBoolean(args[2])));
                 sender.sendMessage("NC> Toggle status set on entity with ID " + args[1]);
             } else {

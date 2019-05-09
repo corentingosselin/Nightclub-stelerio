@@ -47,4 +47,8 @@ public class WrapperPlayServerEntityDestroy extends AbstractPacket {
 		handle.getIntegerArrays().write(0, value);
 	}
 
+	public void setEntities(int... value) {
+		handle.getIntegerArrays().write(0, value);
+	}
+
 }

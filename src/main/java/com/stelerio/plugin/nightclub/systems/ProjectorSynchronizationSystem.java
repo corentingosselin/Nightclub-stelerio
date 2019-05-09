@@ -3,22 +3,22 @@ package com.stelerio.plugin.nightclub.systems;
 import com.artemis.Aspect;
 import com.artemis.ComponentMapper;
 import com.artemis.systems.IteratingSystem;
+import com.stelerio.plugin.nightclub.components.ProjectorComponent;
 import com.stelerio.plugin.nightclub.components.ProjectorSynchronizationComponent;
 import com.stelerio.plugin.nightclub.components.TransformComponent;
 import com.stelerio.plugin.nightclub.components.VelocityComponent;
-import com.stelerio.plugin.nightclub.packet.wrapper.WrapperPlayServerEntityTeleport;
-import com.stelerio.plugin.nightclub.utils.PacketUtil;
 import com.stelerio.plugin.nightclub.utils.Vector3f;
 
 public class ProjectorSynchronizationSystem extends IteratingSystem {
 
 
     private ComponentMapper<ProjectorSynchronizationComponent> mProjectorSynchronization;
+    private ComponentMapper<ProjectorSynchronizationComponent> mProjector;
     private ComponentMapper<TransformComponent> mTransform;
     private ComponentMapper<VelocityComponent> mVelocity;
 
     public ProjectorSynchronizationSystem() {
-        super(Aspect.all(TransformComponent.class, ProjectorSynchronizationComponent.class, VelocityComponent.class));
+        super(Aspect.all(TransformComponent.class, ProjectorSynchronizationComponent.class, VelocityComponent.class, ProjectorComponent.class));
     }
 
     @Override
@@ -26,21 +26,24 @@ public class ProjectorSynchronizationSystem extends IteratingSystem {
         ProjectorSynchronizationComponent projectorSync = mProjectorSynchronization.get(entityId);
         TransformComponent transform = mTransform.get(entityId);
         VelocityComponent velocity = mVelocity.get(entityId);
-        // TODO send packets depending on projector data
-
-        if (velocity.positionVelocity.equals(Vector3f.ZERO)) return;
+        ProjectorSynchronizationComponent projector = mProjector.get(entityId);
 
 
-        //let's tp the armorstand
-        WrapperPlayServerEntityTeleport tp = new WrapperPlayServerEntityTeleport();
-        tp.setEntityID(projectorSync.targetID);
-        tp.setOnGround(false);
-        tp.setX((double)transform.position.getX());
-        tp.setY((double)transform.position.getY());
-        tp.setZ((double)transform.position.getZ());
-        //useless for armorstand
-        tp.setPitch((byte) 0);
-        tp.setYaw((byte) 0);
+        //check if the pos is the same
+
+        // check if position has changed
+        if (transform.position != null) {
+
+
+        }
+
+        // check if rotation has changed
+        if (transform.rotation != null) {
+            if(transform.rotation.equals(Vector3f.ZERO)) {
+
+            }
+        }
+
 
         //TODO I can't send the packet because I do not have the location, or I need a method to calculate distance between 2 points
         //PacketUtil.sendGlobalPacket(location,tp);

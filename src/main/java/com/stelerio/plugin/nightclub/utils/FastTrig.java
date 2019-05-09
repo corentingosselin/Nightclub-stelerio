@@ -52,4 +52,10 @@ public class FastTrig {
 		return sin(radians + Math.PI / 2);
 	}
 
+
+	public static byte toPackedByte(float f) {
+		return (byte) ((int) (f * 256.0F / 360.0F));
+	}
+
+
 }

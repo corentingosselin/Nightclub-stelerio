@@ -32,6 +32,17 @@ public class Vector3f {
         mY = y;
         mZ = z;
     }
+
+    public Vector3f add(Vector3f other) {
+        mX = mX + other.getX();
+        mY = mY + other.getY();
+        mZ = mZ + other.getZ();
+        return this;
+    }
+
+    public Vector3f clone() {
+        return new Vector3f(mX,mY,mZ);
+    }
     
     public boolean equals(Vector3f other) {
         if (this == other) return true;
