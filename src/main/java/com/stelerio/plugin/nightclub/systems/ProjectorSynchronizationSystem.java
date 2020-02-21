@@ -25,6 +25,7 @@ public class ProjectorSynchronizationSystem extends IteratingSystem {
     protected void process(int entityId) {
         ProjectorSynchronizationComponent projectorSync = mProjectorSynchronization.get(entityId);
         TransformComponent transform = mTransform.get(entityId);
+        //velocity check is in movement
         VelocityComponent velocity = mVelocity.get(entityId);
         ProjectorSynchronizationComponent projector = mProjector.get(entityId);
 
@@ -32,14 +33,14 @@ public class ProjectorSynchronizationSystem extends IteratingSystem {
         //check if the pos is the same
 
         // check if position has changed
-        if (transform.position != null) {
+        if (velocity.positionVelocity != null) {
 
 
         }
 
         // check if rotation has changed
         if (transform.rotation != null) {
-            if(transform.rotation.equals(Vector3f.ZERO)) {
+            if(velocity.rotationVelocity.equals(Vector3f.ZERO)) {
 
             }
         }
